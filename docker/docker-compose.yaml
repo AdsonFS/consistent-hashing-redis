@@ -1,0 +1,52 @@
+version: '3'
+services:
+  redis1:
+    container_name: redis1
+    image: redislabs/redismod
+    ports:
+      - 6379:6379
+    networks:
+      - rediscluster
+  redis2:
+    container_name: redis2
+    image: redislabs/redismod
+    command: --port 6380
+    ports:
+      - 6380:6380
+    networks:
+      - rediscluster
+  redis3:
+    container_name: redis3
+    image: redislabs/redismod
+    command: --port 6381
+    ports:
+      - 6381:6381
+    networks:
+      - rediscluster
+  redis4:
+    container_name: redis4
+    image: redislabs/redismod
+    command: --port 6382
+    ports:
+      - 6382:6382
+    networks:
+      - rediscluster
+  redis5:
+    container_name: redis5
+    image: redislabs/redismod
+    command: --port 6383
+    ports:
+      - 6383:6383
+    networks:
+      - rediscluster
+  redisinsight:
+    container_name: redisinsight
+    image: redislabs/redisinsight:latest
+    ports:
+      - '8001:8001'
+    networks:
+      - rediscluster
+
+networks:
+  rediscluster:
+    external: true
