@@ -64,7 +64,6 @@ public class ConsistentHashing : IConsistentHashing
         if (_map.Count == 0) return null;
         uint hashKey = GetHash(name);
         System.Console.WriteLine($"Name: {name}\tKey:{hashKey}");
-
         uint index = QuerySegTree(1, 1, _hashRange, hashKey, _hashRange);
         if (index == 0) index = QuerySegTree(1, 1, _hashRange, 1, hashKey - 1);
         System.Console.WriteLine($"Servidor Selecionado: {_map[index].Name}");
